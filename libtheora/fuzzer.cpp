@@ -166,6 +166,12 @@ void TheoraDecoder::writeImage(const th_ycbcr_buffer& ycbcrbuf) const {
                 fuzzing::memory::memory_test(in_v, w >> 1);
             }
         }
+    } else if (px_fmt==TH_PF_444){
+        for(int i = 0; i < h; i++) {
+            fuzzing::memory::memory_test(ycbcrbuf[0].data+y_offset+ycbcrbuf[0].stride*i, w);
+            fuzzing::memory::memory_test(ycbcrbuf[1].data+y_offset+ycbcrbuf[1].stride*i, w);
+            fuzzing::memory::memory_test(ycbcrbuf[2].data+y_offset+ycbcrbuf[2].stride*i, w);
+        }
     } else {
         const int uv_offset = (ti.pic_x/2) + (ycbcrbuf[1].stride) * (ti.pic_y/2);
 
