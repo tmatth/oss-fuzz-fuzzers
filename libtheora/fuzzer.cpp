@@ -146,8 +146,8 @@ void TheoraDecoder::writeImage(const th_ycbcr_buffer& ycbcrbuf) const {
 
     const th_pixel_fmt px_fmt = ti.pixel_fmt;
     const int y_offset = (ti.pic_x&~1) + ycbcrbuf[0].stride * (ti.pic_y&~1);
-    const int w = (ti.pic_x+ti.frame_width+1&~1)-(ti.pic_x&~1);
-    const int h = (ti.pic_y+ti.frame_height+1&~1)-(ti.pic_y&~1);
+    const int w = (ti.pic_x+ti.pic_width+1&~1)-(ti.pic_x&~1);
+    const int h = (ti.pic_y+ti.pic_height+1&~1)-(ti.pic_y&~1);
 
 
     if ( px_fmt == TH_PF_422) {
